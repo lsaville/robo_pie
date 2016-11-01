@@ -16,6 +16,13 @@ describe Category do
 
         expect(category).to be_invalid
       end
+
+      it "is invalid if not unique" do
+        category = Fabricate(:category, title: "Gasket Lovers")
+        category1 = Fabricate.build(:category, title: "Gasket Lovers")
+
+        expect(category1).to be_invalid
+      end
     end
   end
 
