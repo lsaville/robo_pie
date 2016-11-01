@@ -2,7 +2,8 @@
 
 <% @items.each do |pie| %>
   <p><%= pie.title %></p>
+  <img src="<%= pie.image %>" alt="delicious pie" />
   <p><%= pie.description %></p>
   <p><%= pie.price %></p>
-  <img src="<%= pie.image %>" alt="delicious pie" />
+  <%= button_to "Add To Cart", carts_path, class: "btn btn-danger" %>
 <% end %>
