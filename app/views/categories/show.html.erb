@@ -1,0 +1,7 @@
+<h1> All Items For <%= @category.title %> </h1>
+  <% @category.items.each do |item| %>
+    <%= item.title %> <br>
+    <%= item.description %> <br>
+    <%= item.price %> <br>
+    <img src=" <%= item.image %> " alt="" />
+  <% end %>
