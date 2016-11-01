@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Visitor can browse by category" do
   context "Categories exist" do
-    describe "they visit /:category_name" do
+    scenario "they visit /:category_name" do
       category1 = Category.create(title: "gasket lovers")
       category2 = Category.create(title: "plastitarian")
 
