@@ -14,10 +14,10 @@ describe "Visitor can browse by category" do
 
       visit "/gasket_lovers"
 
-      expect(page).to have_content item1.title
-      expect(page).to have_content item2.title
-      expect(page).to_not have_content item3.title
-      expect(page).to_not have_content item4.title
+      expect(page).to have_content(item1.title)
+      expect(page).to have_content(item2.title)
+      expect(page).to_not have_content(item3.title)
+      expect(page).to_not have_content(item4.title)
     end
   end
 end
