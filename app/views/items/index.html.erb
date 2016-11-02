@@ -1,9 +1,9 @@
 <h1>All Pies</h1>
 
-<% @items.each do |pie| %>
-  <p><%= pie.title %></p>
-  <img src="<%= pie.image %>" alt="delicious pie" />
-  <p><%= pie.description %></p>
-  <p><%= pie.price %></p>
-  <%= button_to "Add To Cart", carts_path(item_id: pie.id), class: "btn btn-danger" %>
+<% @items.each do |item| %>
+  <p><%= item.title %></p>
+  <img src="<%= item.image %>" alt="delicious item" />
+  <p><%= item.description %></p>
+  <p><%= item.price %></p>
+  <%= button_to "Add To Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
 <% end %>
