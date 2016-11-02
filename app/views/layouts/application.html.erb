@@ -17,7 +17,7 @@
       <%= content_tag :div, message %>
     <% end %>
 
-    Cart: 0
+    <%= button_to "Cart:", cart_path %><%= @cart.total %>
     <%= yield %>
   </body>
 </html>
