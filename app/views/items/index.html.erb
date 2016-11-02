@@ -5,5 +5,5 @@
   <img src="<%= pie.image %>" alt="delicious pie" />
   <p><%= pie.description %></p>
   <p><%= pie.price %></p>
-  <%= button_to "Add To Cart", carts_path, class: "btn btn-danger" %>
+  <%= button_to "Add To Cart", carts_path(item_id: pie.id), class: "btn btn-danger" %>
 <% end %>
