@@ -13,4 +13,8 @@ class Cart
   def total
     contents.values.sum
   end
+
+  def count_of(item_id)
+    contents[item_id.to_s]
+  end
 end
