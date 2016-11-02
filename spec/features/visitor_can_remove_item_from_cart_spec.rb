@@ -17,7 +17,7 @@ describe 'user has a cart with items and can remove one' do
   end
 
   scenario 'user can click on the item title in the flash massage to go to that items page' do
-    click_button "#{@item.title}"
+    click_link "#{@item.title}"
 
     expect(current_path).to eq(item_path(@item))
     expect(page).to have_content("#{@item.price}")
