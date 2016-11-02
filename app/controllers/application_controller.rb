@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
   def set_cart
     @cart = Cart.new(session[:cart])
   end
+
+  def get_items(contents)
+    contents.reduce({}) do |result, (id, quantity)|
+      result[Item.find(id.to_i)] = quantity
+      result
+    end
+  end
 end
