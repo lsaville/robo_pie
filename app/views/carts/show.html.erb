@@ -7,6 +7,7 @@
   Description:<p><%= item.description %></p>
   Price:<p><%= number_to_currency(item.price) %></p>
   Quantity:<%= quantity %>
+  <%= button_to "Remove", cart_path(item_id: item.id), method: :delete %>
 <% end %>
 <!-- total -->
 Total: <%= number_to_currency(@total) %>
