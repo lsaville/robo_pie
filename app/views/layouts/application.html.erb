@@ -59,10 +59,9 @@
 
 
     <% flash.each do |type, message| %>
-      <%= content_tag(:div, message, class: "message text-center") %>
+      <%= content_tag(:div, message.html_safe, class: "message text-center") %>
     <% end %>
 
-    <!-- <%= button_to "Cart:", cart_path, method: :get %><%= @cart.total %> -->
     <%= yield %>
   </body>
 </html>
