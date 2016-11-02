@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
       result
     end
   end
+
+  def totalize(contents)
+    contents.reduce(0) do |total, (id, quantity)|
+      total += Item.find(id.to_i).price * quantity
+      total
+    end
+  end
 end
