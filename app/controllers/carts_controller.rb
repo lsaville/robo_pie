@@ -7,4 +7,8 @@ class CartsController < ApplicationController
     flash[:notice] = "You now have #{pluralize(@cart.count_of(item.id), item.title)} in your Cart"
     redirect_to items_path
   end
+
+  def show
+    @items = get_items(@cart.contents)
+  end
 end
