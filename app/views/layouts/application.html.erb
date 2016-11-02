@@ -13,6 +13,11 @@
   </head>
 
   <body>
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message %>
+    <% end %>
+
+    Cart: 0
     <%= yield %>
   </body>
 </html>
