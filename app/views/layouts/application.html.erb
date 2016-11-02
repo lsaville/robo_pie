@@ -59,7 +59,7 @@
 
 
     <% flash.each do |type, message| %>
-      <%= content_tag :div, message %>
+      <%= content_tag(:div, message, class: "message text-center") %>
     <% end %>
 
     <!-- <%= button_to "Cart:", cart_path, method: :get %><%= @cart.total %> -->
