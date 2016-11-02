@@ -10,19 +10,25 @@ describe "User clicks add to cart" do
 
     visit items_path
 
-    expect(page).to have_content("Cart: 0")
+    expect(page).to have_content("0")
 
     click_button "Add To Cart"
 
-    expect(page).to have_content("Cart: 1")
-    expect(page).to have_content("You now have 1 #{@item.title} in your cart")
+    expect(page).to have_content("1")
+    expect(page).to have_content("You now have 1 #{@item.title} in your Cart")
+
+    click_button "Add To Cart"
+
+    expect(page).to have_content("2")
+    expect(page).to have_content("You now have 2 #{@item.title}s in your Cart")
   end
 
   scenario "User can visit cart" do
 
     visit items_path
+
     click_button "Add To Cart"
-    click_button "Cart"
+    click_button "Cart:"
 
     expect(current_path).to eq("/cart")
     expect(page).to have_content("#{@item.title}")
