@@ -17,8 +17,14 @@ RSpec.describe Cart, type: :model do
   end
 
   it "returns total number of items in cart" do
-    cart = Cart.new( { "1" => 2, "2" => 7, "3" => "6" } )
+    cart = Cart.new( { "1" => 2, "2" => 7, "3" => 6 } )
 
-    expect(cart.total).to eq(7)
+    expect(cart.total).to eq(15)
+  end
+
+  it "returns total number of a specific item" do
+    cart = Cart.new( { "1" => 2, "2" => 7, "3" => 6 } )
+
+    expect(cart.count_of(2)).to eq(7)
   end
 end
