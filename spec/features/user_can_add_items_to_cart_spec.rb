@@ -28,7 +28,7 @@ describe "User clicks add to cart" do
     visit items_path
 
     click_button "Add To Cart"
-    click_button "Cart:"
+    click_link "cart"
 
     expect(current_path).to eq("/cart")
     expect(page).to have_content("#{@item.title}")
