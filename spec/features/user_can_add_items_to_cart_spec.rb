@@ -20,8 +20,6 @@ describe "User clicks add to cart" do
 
   scenario "User can visit cart" do
 
-    click_button "Add To Cart"
-
     visit items_path
     click_button "Add To Cart"
     click_button "Cart"
