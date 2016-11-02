@@ -1,0 +1,12 @@
+<h1>Your Cart</h1>
+
+<!-- iterated items -->
+<% @items.each do |item, quantity| %>
+  <p><%= item.title %></p>
+  <img src="<%= item.image %>" alt="delicious <%= item.title %>" />
+  <p><%= item.description %></p>
+  <p><%= item.price %></p>
+  <p><%= quantity %></p>
+<% end %>
+<!-- total -->
+Total: 
