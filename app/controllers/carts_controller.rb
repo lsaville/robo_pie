@@ -15,4 +15,11 @@ class CartsController < ApplicationController
     @items = get_items(@cart.contents)
     @total = totalize(@cart.contents)
   end
+
+  def destroy
+    @item = Item.find(params[:item_id].to_i)
+    @cart.contents.delete(params[:item_id])
+    flash[:success] = %Q[Successfully removed #{view_context.button_to(@item.title, item_path(@item))} from your cart]
+    redirect_to cart_path
+  end
 end
