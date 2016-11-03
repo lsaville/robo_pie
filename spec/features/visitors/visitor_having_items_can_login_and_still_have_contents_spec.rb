@@ -10,7 +10,6 @@ describe 'visitor having items in cart logs in' do
     visit cart_path
 
     expect(page).to_not have_content('Checkout')
-    expect(page).to have_content('Login or Create Account to Checkout')
 
     click_button 'Login or Create Account to Checkout'
     click_link 'Create Account'
@@ -26,7 +25,7 @@ describe 'visitor having items in cart logs in' do
     expect(page).to have_content(item.price)
 
     click_link 'Logout'
-    
+
     expect(page).to have_content('Login')
     expect(page).to_not have_content('Logout')
   end
