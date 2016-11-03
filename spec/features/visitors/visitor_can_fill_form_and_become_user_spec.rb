@@ -35,7 +35,7 @@ describe "Visitor visits login page and enters information" do
       fill_in "Password", with: "123"
       fill_in "Password Confirmation", with: "123"
       click_button "Create Account"
-      save_and_open_page
+
       expect(page).to have_content("prohibited this record from being saved")
     end
 
