@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: "welcome#show"
-  get "/login", to: 'users#login'
+  get "/login", to: 'sessions#new'
 
-  resources :users, only: [:create]
+  get "/dashboard", to: 'users#show'
+
+  resources :users, only: [:create, :new]
 
   resources :carts, only: [:create]
   get "/cart", to: 'carts#show'
