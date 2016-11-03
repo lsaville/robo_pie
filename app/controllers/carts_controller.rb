@@ -22,4 +22,9 @@ class CartsController < ApplicationController
     flash[:success] = %Q[Successfully removed #{view_context.link_to(@item.title, item_path(@item))} from your cart]
     redirect_to cart_path
   end
+
+  def update
+    @cart.contents[params[:item_id]] = params[:quantity].to_i
+    redirect_to cart_path
+  end
 end
