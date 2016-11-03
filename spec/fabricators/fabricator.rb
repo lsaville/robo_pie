@@ -1,5 +1,5 @@
 Fabricator(:item) do
-  title { Faker::Food.spice }
+  title { Faker::Space.moon }
   description { Faker::Company.bs }
   price { Faker::Commerce.price }
   image { Faker::Avatar.image}
