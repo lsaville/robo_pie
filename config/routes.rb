@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: "welcome#show"
   get "/login", to: 'users#login'
 
+  resources :users, only: [:create]
+
   resources :carts, only: [:create]
   get "/cart", to: 'carts#show'
   delete "/cart", to: 'carts#destroy'
