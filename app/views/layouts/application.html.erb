@@ -45,7 +45,7 @@
           <li><a href="<%= items_path %>">Menu</a></li>
           <li><a href="#">About Us</a></li>
           <% if logged_in? %>
-            <li><a href="#"> Logout </a> </li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
             <li class="navbar-right">Logged in as <%= current_user.name %> </li>
 
           <% else %>
