@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  def dashboard
-
+  def show
+    @user = User.find(session[:user_id])
   end
 
   def new
@@ -10,11 +10,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
+      flash[:success] = "Successfully Created Account!"
+      session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      render :login
+      render :new
     end
   end
 
