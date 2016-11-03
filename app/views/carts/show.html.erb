@@ -7,7 +7,8 @@
   Price:<p><%= number_to_currency(item.price) %></p>
   Quantity:
   <%= form_tag(cart_path(item_id: item.id), method: :put) do %>
-    <%= select_tag(:quantity, options_for_select(['1','2','3','4','5','6','7','8','9','10'], quantity), :onchange => 'this.form.submit();') %>
+    <%= select_tag(:quantity, options_for_select(['1','2','3','4','5','6','7','8','9','10'], quantity)) %>
+    <%= submit_tag 'Update' %>
   <% end %>
   <%= button_to "Remove", cart_path(item_id: item.id), method: :delete %>
 <% end %>
