@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :new]
 
+  resources :orders, only: [:index]
+
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
@@ -16,8 +18,5 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
-
   get ':category_title', to: 'categories#show'
-
-
 end
