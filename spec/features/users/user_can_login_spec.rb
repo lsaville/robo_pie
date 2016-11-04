@@ -18,5 +18,16 @@ describe 'user can login' do
   end
 
   context 'user enters invalid credentials' do
+    scenario 'they miss a field' do
+      user = Fabricate(:user)
+
+      visit login_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: ''
+      click_button 'Login'
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("error")
+    end
   end
 end
