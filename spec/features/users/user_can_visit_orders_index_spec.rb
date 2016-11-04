@@ -6,8 +6,7 @@ describe 'User can see past orders' do
     items = Fabricate.times(5, :item, category: category)
     user = User.create(name: 'r', email: 'r@r.com', password: '123')
     order1 = Order.create(user: user)
-    order1.items.new(items[0])
-    byebug
+    order1.items << items
 
     visit login_path
     fill_in 'Email', with: 'r@r.com'
