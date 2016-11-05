@@ -4,15 +4,15 @@
 
 <% @order.items.each do |item| %>
   <div>
-    <%= image_tag src:item.image, alt:"Dank pie" %>
-    <%= item.title %>
+    <%= image_tag item.image, size:'50x50', alt:'Dank pie' %>
+    <%= link_to item.title, item_path(item) %>
     <%= item.item_quantity %>
-    <%= item.price %>
-    <%= item.subtotal %>
+    <%= number_to_currency(item.price) %>
+    <%= number_to_currency(item.subtotal) %>
   </div>
 <% end %>
 
-<h3> <%= @order.updated_at.strftime('%B %d, %Y') %> </h3>
-Status:  "Boom goes the dynamite"
+Updated At: <h5> <%= @order.updated_at.strftime('%B %d, %Y') %> </h5>
+Status: <%= @order.status %> <br>
 
-Total: <%= @order.totalize %>
+Total: <%= number_to_currency(@order.totalize) %>
