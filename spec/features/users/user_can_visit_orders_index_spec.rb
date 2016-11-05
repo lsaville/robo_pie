@@ -12,6 +12,16 @@ describe 'User can see past orders' do
     order1.items << items1
     order2.items << items2
 
+    order1.items.each do |item|
+      item.orders_items[0].quantity = 1
+      item.orders_items[0].save
+    end
+
+    order2.items.each do |item|
+      item.orders_items[0].quantity = 1
+      item.orders_items[0].save
+    end
+
     visit login_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
