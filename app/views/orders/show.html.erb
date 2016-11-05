@@ -1,0 +1,18 @@
+<h1> Your Order </h1>
+
+<h3> <%= @order.created_at.strftime('%B %d, %Y') %> </h3>
+
+<% @order.items.each do |item| %>
+  <div>
+    <%= image_tag src:item.image, alt:"Dank pie" %>
+    <%= item.title %>
+    <%= item.item_quantity %>
+    <%= item.price %>
+    <%= item.subtotal %>
+  </div>
+<% end %>
+
+<h3> <%= @order.updated_at.strftime('%B %d, %Y') %> </h3>
+Status:  "Boom goes the dynamite"
+
+Total: <%= @order.totalize %>
