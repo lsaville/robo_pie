@@ -5,22 +5,7 @@
 <div>
   <%= order.created_at.strftime('%B %d, %Y') %>
   <%= order.items.count %>
-  <!-- <%= order.totalize %> -->
+  <%= order.totalize %>
   <%= button_to "View Order", order_path(order), method: :get %>
 </div>
 <% end %>
-
-<!--
-<% @orders.each do |order| %>
-<div>
-  <%= order.created_at.strftime('%B %d, %Y') %>
-  <% order.items.each do |item|  %>
-  <div>
-    <%= image_tag item.image, size: "50x50", alt: "Delicious Pie" %>
-    <%= item.title %>
-    <%= number_to_currency(item.price) %>
-  </div>
-  <% end %>
-
-</div>
-<% end %> -->
