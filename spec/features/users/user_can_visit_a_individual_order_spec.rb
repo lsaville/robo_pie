@@ -25,9 +25,10 @@ describe 'User visits orders page' do
 
       expect(current_path).to eq(order_path(order))
       expect(page).to have_content(order.created_at.strftime('%B %d, %Y'))
-      expect(page).to have_content(items.first.title)
+      expect(page).to have_link(items.first.title)
       expect(page).to have_content(1)
       expect(page).to have_content(items.first.price)
+      expect(page).to have_content("ordered")
     end
   end
 end
