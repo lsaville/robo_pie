@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user can login' do
   context 'user enters valid credentials' do
-    scenario 'they go to login_path and enter their credentails' do
+    scenario 'they go to login_path and enter their credentials' do
       user = Fabricate(:user)
 
       visit login_path
@@ -27,7 +27,7 @@ describe 'user can login' do
       click_button 'Login'
 
       expect(current_path).to eq(login_path)
-      expect(page).to have_content("error")
+      expect(page).to have_content("Something went wrong!")
     end
   end
 end
