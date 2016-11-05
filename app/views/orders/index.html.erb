@@ -1,0 +1,11 @@
+<h1>Your Orders</h1>
+
+
+<% @orders.each do |order| %>
+<div>
+  <%= order.created_at.strftime('%B %d, %Y') %>
+  <%= order.items.count %>
+  <%= order.totalize %>
+  <%= button_to "View Order", order_path(order), method: :get %>
+</div>
+<% end %>

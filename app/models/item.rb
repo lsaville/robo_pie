@@ -8,4 +8,12 @@ class Item < ActiveRecord::Base
 
   has_many :orders_items
   has_many :orders, through: :orders_items
+
+  def item_quantity
+    orders_items[0].quantity
+  end
+
+  def subtotal
+    item_quantity * price
+  end
 end
