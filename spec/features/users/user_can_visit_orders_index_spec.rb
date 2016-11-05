@@ -5,18 +5,25 @@ describe 'User can see past orders' do
     category = Fabricate(:category)
     items1 = Fabricate.times(5, :item, category: category)
     items2 = Fabricate.times(2, :item, category: category)
-    user = User.create(name: 'r', email: 'r@r.com', password: '123')
+    user = Fabricate(:user)
+    # user = User.create(name: 'r', email: 'r@r.com', password: '123')
     order1 = Order.create(user: user)
     order2 = Order.create(user: user)
     order1.items << items1
     order2.items << items2
 
-
     visit login_path
-    fill_in 'Email', with: 'r@r.com'
-    fill_in 'Password', with: '123'
-    click_button 'Orders'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Login'
+    click_link 'Orders'
 
+    save_and_open_page
     expect(current_path).to eq(orders_path)
+    expect(page).to have_content(order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(order1.items.first.title)
+
+    expect(page).to have_content(order2.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(order2.items.first.title)
   end
 end
