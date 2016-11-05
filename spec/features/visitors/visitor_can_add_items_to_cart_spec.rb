@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User clicks add to cart" do
+describe "Visitor clicks add to cart" do
   before :each do
     @category = Fabricate(:category)
     @item = Fabricate(:item, category: @category)
@@ -23,7 +23,7 @@ describe "User clicks add to cart" do
     expect(page).to have_content("You now have 2 #{@item.title}s in your Cart")
   end
 
-  scenario "User can visit cart" do
+  scenario "Visitor can visit cart" do
 
     visit items_path
 
