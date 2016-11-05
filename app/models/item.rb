@@ -16,4 +16,8 @@ class Item < ActiveRecord::Base
   def subtotal
     item_quantity * price
   end
+
+  def active?
+    status == 'active'
+  end
 end

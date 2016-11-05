@@ -4,6 +4,7 @@ Fabricator(:item) do
   price { Faker::Commerce.price }
   image { Faker::Avatar.image}
   category
+  status 'active'
 end
 
 Fabricator(:category) do

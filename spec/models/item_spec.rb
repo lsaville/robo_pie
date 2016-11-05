@@ -49,5 +49,12 @@ describe Item do
       end
     end
 
+    describe 'default status' do
+      it 'has active as default' do
+        item = Item.new
+
+        expect(item.status).to eq('active')
+      end
+    end
   end
 end
