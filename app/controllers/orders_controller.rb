@@ -4,7 +4,22 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if current_user != Order.find(params[:id]).user
+      render file: '/public/404'
+    else
+      @order = Order.find(params[:id])
+    end
   end
 
+  def create
+    user = User.find(session[:user_id])
+    current_order = user.orders.new
+    session[:cart].each do |item, quantity|
+      current_order.items << Item.find(item)
+      current_order.orders_items[-1].quantity = quantity
+    end
+    current_order.save
+    flash[:success] = 'Order was successfully placed!'
+    redirect_to orders_path
+  end
 end

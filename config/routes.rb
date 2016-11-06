@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :new]
 
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show, :create]
 
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
