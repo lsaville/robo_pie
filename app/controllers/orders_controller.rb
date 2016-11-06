@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if current_user != Order.find(params[:id]).user
+      render file: '/public/404'
+    else
+      @order = Order.find(params[:id])
+    end
   end
 
   def create
