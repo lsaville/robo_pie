@@ -28,10 +28,8 @@ describe 'user as visitor adds to cart, signs in, checks out' do
       click_button 'Checkout'
 
       expect(current_path).to eq(orders_path)
-      expect(page).to have_content('Order was successsfully placed!')
-      expect(page).to have_content(items[0].title)
-      expect(page).to have_content(items[1].title)
-      expect(page).to have_content(items[2].title)
+      expect(page).to have_content('Order was successfully placed!')
+      expect(page).to have_content(Order.last.created_at.strftime('%B %d, %Y'))
     end
   end
 end
