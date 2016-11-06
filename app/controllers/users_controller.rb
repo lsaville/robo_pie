@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    if @user.admin?
+      redirect_to admin_dashboard_path
+    end
   end
 
   def new
