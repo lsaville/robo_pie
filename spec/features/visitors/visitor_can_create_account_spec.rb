@@ -6,7 +6,7 @@ describe 'Vistor can visit root and click on create account' do
       click_button "Login"
 
       expect(current_path).to eq(login_path)
-
+      
       expect(page).to have_content("Email")
       expect(page).to have_content("Password")
       expect(page).to have_selector(:link_or_button, "Create Account")
