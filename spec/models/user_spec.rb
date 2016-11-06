@@ -31,5 +31,21 @@ describe User do
         expect(user).to be_invalid
       end
     end
+
+    context 'role' do
+      it "can return admin" do
+        user = Fabricate.build(:user, role: 1)
+
+        expect(user.role).to eq("admin")
+        expect(user.admin?).to be_truthy
+      end
+
+      it "can return default" do
+        user = Fabricate.build(:user)
+
+        expect(user.role).to eq("default")
+        expect(user.default?).to be_truthy
+      end
+    end
   end
 end
