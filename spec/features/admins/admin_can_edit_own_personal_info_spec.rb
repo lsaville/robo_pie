@@ -20,4 +20,14 @@ describe 'Admin visits dashboard' do
     expect(page).to have_content('Shrimp@crustateon.com')
     expect(page).to have_content('Successfully updated!')
   end
+
+  scenario 'Admin cant update a users info' do
+    admin = Fabricate(:user, role: 1)
+    user = Fabricate(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit "/admin/#{user.id}/edit"
+
+    expect(page).to have_content('404')
+  end
 end
