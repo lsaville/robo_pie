@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: 'welcome#show'
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+  end
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -19,4 +23,6 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
 
   get ':category_title', to: 'categories#show'
+
+
 end
