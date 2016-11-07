@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  validates :status, presence: true 
+  validates :status, presence: true
   belongs_to :user
 
   has_many :orders_items
@@ -11,5 +11,4 @@ class Order < ActiveRecord::Base
       result
     end
   end
-
 end
