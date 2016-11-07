@@ -10,6 +10,11 @@ describe 'Admin visits dashboard' do
 
     fill_in 'Name', with: 'Jumbo'
     fill_in 'Email', with: 'Shrimp@crustateon.com'
+    fill_in 'Street', with: '123 poplar ave'
+    fill_in 'City', with: 'Denver'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip', with: '80205'
+    fill_in 'Phone', with: '424-425-4325'
     fill_in 'Password', with: '1234'
     fill_in 'Password Confirmation', with: '1234'
 
