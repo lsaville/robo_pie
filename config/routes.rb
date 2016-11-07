@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
+    get '/:id', to: 'dashboard#show'
+    get ':id/edit', to: 'dashboard#edit'
+    # put '/:id', to: 'dashboard#update'
   end
 
   get '/login', to: 'sessions#new'
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
 
-  resources :users, only: [:create, :new]
+  resources :users, only: [:create, :new, :update]
 
   resources :orders, only: [:index, :show, :create]
 
