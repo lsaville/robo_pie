@@ -1,6 +1,7 @@
-<%= form_for @user do |f| %>
-  <%= render partial: "shared/errors", locals: { target: @user } %>
-  
+<h1> Edit Your Information </h1>
+
+<%= form_for @admin do |f| %>
+  <%= render partial: "shared/errors", locals: { target: @admin } %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -28,5 +29,5 @@
   <%= f.label :password_confirmation, "Password Confirmation"%>
   <%= f.text_field :password_confirmation %>
 
-  <%= f.submit "Create Account" %>
+  <%= f.submit "Update Info" %>
 <% end %>

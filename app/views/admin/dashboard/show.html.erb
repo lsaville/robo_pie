@@ -1,0 +1,6 @@
+<h1> Welcome Admin: <%= @admin.name %> </h1>
+
+Name: <%= @admin.name %>
+Email: <%= @admin.email %>
+
+<%= button_to "Edit Info", "/admin/#{@admin.id}/edit", method: :get %>
