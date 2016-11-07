@@ -40,20 +40,17 @@ end
 
 30.times do
   user = users.sample
-  item = items.sample
-  order = user.orders.create
-  order.items << item
+  items_set = []
+  rand(1..10).times do
+    items_set << items.sample
+  end
+  order = user.orders.new
+  order.items << items
+  order.orders_items.each do |order_item|
+    order_item.quantity = rand(1..7)
+  end
+  order.save
 end
-# 30.times do
-#   user = users.sample
-#   items_set = []
-#   rand(1..10).times do
-#     items_set << items.sample
-#   end
-#   order = user.orders.create
-#   order.items << items
-#   order.orders_items[rand(1..4)].quantity = rand(1.. 7)
-# end
 
 admin = User.create(
   name: 'obama',
