@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user != Order.find(params[:id]).user
+    if current_user != Order.find(params[:id]).user && !current_user.admin?
       render file: '/public/404'
     else
       @order = Order.find(params[:id])
