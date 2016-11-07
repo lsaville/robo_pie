@@ -15,9 +15,15 @@ describe 'visitor having items in cart logs in' do
     click_link 'Create Account'
     fill_in 'Name', with: 'Barack'
     fill_in 'Email', with: 'prez@white_house.com'
+    fill_in 'Street', with: '123 poplar ave'
+    fill_in 'City', with: 'Denver'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip', with: '80205'
+    fill_in 'Phone', with: '424-425-4325'
     fill_in 'Password', with: 'michelle'
     fill_in 'Password Confirmation', with: 'michelle'
     click_button 'Create Account'
+    
     visit cart_path
 
     expect(page).to have_content(item.title)
