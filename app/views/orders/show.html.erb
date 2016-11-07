@@ -16,3 +16,14 @@ Updated At: <h5> <%= @order.updated_at.strftime('%B %d, %Y') %> </h5>
 Status: <%= @order.status %> <br>
 
 Total: <%= number_to_currency(@order.totalize) %>
+
+<% if current_user.admin? %>
+  <h1>Admin Info</h1>
+  <%= @order.user.name %>
+  <%= @order.user.email %>
+  <%= @order.user.street %>
+  <%= @order.user.city %>
+  <%= @order.user.state %>
+  <%= @order.user.zip %>
+  <%= @order.user.phone %>
+<% end %>
