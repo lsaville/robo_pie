@@ -17,11 +17,10 @@
       <ul>
         <% @orders.each do |order| %>
           <li>#<%= order.id %></li>
-          <li>Date:<%= order.created_at.strftime('%B %d, %Y') %></li>
-          <li>Number of Items:<%= order.items.count %></li>
-          <li>Status:<%= order.status %></li>
+          <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
+          <li>Number of Items: <%= order.items.count %></li>
+          <li>Status: <%= order.status %></li>
           <li><%= button_to 'View Order', order_path(order), method: :get %></li>
-          <li>Conditional button dependent on status</li>
         <% end %>
       </ul>
     </div>
@@ -29,11 +28,12 @@
       <ul>
         <% @orders_ordered.each do |order| %>
           <li>#<%= order.id %></li>
-          <li>Date:<%= order.created_at.strftime('%B %d, %Y') %></li>
-          <li>Number of Items:<%= order.items.count %></li>
-          <li>Status:<%= order.status %></li>
+          <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
+          <li>Number of Items: <%= order.items.count %></li>
+          <li>Status: <%= order.status %></li>
           <li><%= button_to 'View Order', order_path(order), method: :get %></li>
-          <li>Conditional button dependent on status</li>
+          <li><%= button_to 'Mark as Paid', order_path(order, status: 'paid'), method: :put  %></li>
+          <li><%= button_to 'Cancel', order_path(order, status: 'cancelled'), method: :put  %></li>
         <% end %>
       </ul>
     </div>
@@ -41,11 +41,12 @@
       <ul>
         <% @orders_paid.each do |order| %>
           <li>#<%= order.id %></li>
-          <li>Date:<%= order.created_at.strftime('%B %d, %Y') %></li>
-          <li>Number of Items:<%= order.items.count %></li>
-          <li>Status:<%= order.status %></li>
+          <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
+          <li>Number of Items: <%= order.items.count %></li>
+          <li>Status: <%= order.status %></li>
           <li><%= button_to 'View Order', order_path(order), method: :get %></li>
-          <li>Conditional button dependent on status</li>
+          <li><%= button_to 'Mark as Completed', order_path(order, status: 'completed'), method: :put  %></li>
+          <li><%= button_to 'Cancel', order_path(order, status: 'cancelled'), method: :put  %></li>
         <% end %>
       </ul>
     </div>
@@ -53,11 +54,10 @@
       <ul>
         <% @orders_cancelled.each do |order| %>
           <li>#<%= order.id %></li>
-          <li>Date:<%= order.created_at.strftime('%B %d, %Y') %></li>
-          <li>Number of Items:<%= order.items.count %></li>
-          <li>Status:<%= order.status %></li>
+          <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
+          <li>Number of Items: <%= order.items.count %></li>
+          <li>Status: <%= order.status %></li>
           <li><%= button_to 'View Order', order_path(order), method: :get %></li>
-          <li>Conditional button dependent on status</li>
         <% end %>
       </ul>
     </div>
@@ -65,11 +65,10 @@
       <ul>
         <% @orders_completed.each do |order| %>
           <li>#<%= order.id %></li>
-          <li>Date:<%= order.created_at.strftime('%B %d, %Y') %></li>
-          <li>Number of Items:<%= order.items.count %></li>
-          <li>Status:<%= order.status %></li>
+          <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
+          <li>Number of Items: <%= order.items.count %></li>
+          <li>Status: <%= order.status %></li>
           <li><%= button_to 'View Order', order_path(order), method: :get %></li>
-          <li>Conditional button dependent on status</li>
         <% end %>
       </ul>
     </div>
