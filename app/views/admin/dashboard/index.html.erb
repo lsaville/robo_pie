@@ -1,1 +1,13 @@
 <h1> Welcome Admin </h1>
+
+<h3>All Orders</h3>
+<ul>
+  <% @orders.each do |order| %>
+    <li>#<%= order.id %></li>
+    <li>Date:<%= order.created_at.strftime('%B %d, %Y') %></li>
+    <li>Number of Items:<%= order.items.count %></li>
+    <li>Status:<%= order.status %></li>
+    <li><%= button_to 'View Order', order_path(order), method: :get %></li>
+    <li>Conditional button dependent on status</li>
+  <% end %>
+</ul>
