@@ -41,6 +41,8 @@ describe 'Admin dashboard' do
     click_on 'Ordered'
 
     expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_button('Mark as Paid')
+    expect(page).to have_button('Cancel')
   end
 
   scenario 'it has a list of paid orders' do
@@ -50,6 +52,8 @@ describe 'Admin dashboard' do
     click_on 'Paid'
 
     expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_button('Mark as Completed')
+    expect(page).to have_button('Cancel')
   end
 
   scenario 'it has a list of cancelled orders' do
