@@ -15,6 +15,11 @@ Fabricator(:user) do
   name { Faker::Name.name }
   email { Faker::Internet.email }
   password { Faker::Internet.password }
+  street { Faker::Address.street_address }
+  city { Faker::Address.city }
+  state { Faker::Address.state }
+  zip { Faker::Address.zip_code }
+  phone { Faker::PhoneNumber.phone_number }
 end
 
 Fabricator(:order) do
