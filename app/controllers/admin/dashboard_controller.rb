@@ -14,8 +14,4 @@ class Admin::DashboardController < Admin::BaseController
     render file: '/public/404' unless @admin == current_user
   end
 
-  def edit
-    @admin = User.find(params[:id])
-    render file: '/public/404' unless @admin == current_user
-  end
 end
