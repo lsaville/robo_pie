@@ -1,10 +1,13 @@
+<div class="text-center">
 <% if target.errors.any? %>
-  <h2> <%= pluralize(target.errors.count, "error") %>
-  prohibited this record from being saved: </h2>
+  <div class = 'failure'>
+    <h2> <%= pluralize(target.errors.count, "error") %>
+    prohibited this record from being saved: </h2>
+  </div>
 
-  <ul>
     <% target.errors.full_messages.each do |message| %>
-    <li> <%= message %> </li>
+      <%= message%> <br>
     <% end %>
-  </ul>
+
 <% end %>
+</div>
