@@ -17,7 +17,7 @@ describe 'Admin can edit exiting item' do
       fill_in 'Title', with: 'new title'
       fill_in 'Description', with: 'great new description'
       fill_in 'Image', with: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNddY16cz9LvFgHr_HQ4iavRXRcpKYCmOvoOXhoYdNMk6E3IK1aA'
-      select 'active', from: 'status'
+      select 'active', from: 'item[status]'
       click_button 'Update Item'
 
       expect(current_path).to eq(admin_items_path)
