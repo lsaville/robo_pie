@@ -49,7 +49,8 @@ describe 'Admin dashboard' do
     @order1.status = 'paid'
     @order1.save
     visit admin_dashboard_path
-    click_on 'Paid'
+    
+    click_link 'Paid'
 
     expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
     expect(page).to have_button('Mark as Completed')
