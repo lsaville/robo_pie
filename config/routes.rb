@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders, only: [:update]
     resources :users, only: [:update, :edit]
+    resources :items, only: [:index, :edit, :update]
     get '/dashboard', to: 'dashboard#index'
     get '/:id', to: 'dashboard#show'
   end
