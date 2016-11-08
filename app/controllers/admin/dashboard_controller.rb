@@ -3,10 +3,6 @@ class Admin::DashboardController < Admin::BaseController
 
   def index
     @orders = Order.all
-    @orders_ordered = Order.where(status: 'ordered')
-    @orders_paid = Order.where(status: 'paid')
-    @orders_cancelled = Order.where(status: 'cancelled')
-    @orders_completed = Order.where(status: 'completed')
   end
 
   def show
