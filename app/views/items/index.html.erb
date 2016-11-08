@@ -2,10 +2,10 @@
 
 <% @items.each do |item| %>
   <div class="col-md-4 <%= item.title %>" >
-    <p><%= item.title %></p>
+    <h4><%= link_to item.title, item_path(item) %></h4>
     <img class="img-thumbnail" src="<%= item.image %>" alt="delicious item" />
     <p><%= item.description %></p>
-    <p><%= item.price %></p>
+    <p><%= number_to_currency(item.price) %></p>
     <%= button_to "Add To Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
   </div>
 <% end %>

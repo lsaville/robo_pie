@@ -1,8 +1,7 @@
-<h1>Welcome  <%= @user.name %>!</h1>
+<div class='text-center'>
+  <h1>Welcome  <%= @user.name %>!</h1>
 
-<%= @user.name %>
-<%= @user.email %>
+  <%= @user.email %><br><br>
 
-<h2> Your Favorite Pies </h2>
-
-<%= link_to 'Orders', orders_path, method: :get %>
+  <%= link_to 'My Past Orders', orders_path, method: :get %>
+</div>

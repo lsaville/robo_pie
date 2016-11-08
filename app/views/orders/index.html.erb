@@ -1,10 +1,17 @@
-<h1>Your Orders</h1>
-
-<% @orders.each do |order| %>
-<div>
-  <%= order.created_at.strftime('%B %d, %Y') %>
-  <%= order.items.count %>
-  <%= order.totalize %>
-  <%= button_to "View Order", order_path(order), method: :get %>
+<div class="text-center">
+  <h1>Your Orders</h1> <br>
 </div>
-<% end %>
+  <table class="table table-hover">
+    <th>Ordered On</th>
+    <th>Item Quantity</th>
+    <th>Total</th>
+    <th>View </th>
+    <% @orders.each do |order| %>
+    <tr>
+      <td> <%= order.created_at.strftime('%B %d, %Y') %></td>
+      <td> <%= order.items.count %> </td>
+      <td> <%= number_to_currency(order.totalize) %> </td>
+      <td> <%= button_to "View Order", order_path(order), method: :get, :class => 'btn btn-primary' %> </td>
+    </tr>
+    <% end %>
+  </table>
