@@ -26,7 +26,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="ordered">
       <ul>
-        <% @orders_ordered.each do |order| %>
+        <% @orders.ordered.each do |order| %>
           <li>#<%= order.id %></li>
           <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
           <li>Number of Items: <%= order.items.count %></li>
@@ -39,7 +39,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="paid">
       <ul>
-        <% @orders_paid.each do |order| %>
+        <% @orders.paid.each do |order| %>
           <li>#<%= order.id %></li>
           <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
           <li>Number of Items: <%= order.items.count %></li>
@@ -52,7 +52,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="cancelled">
       <ul>
-        <% @orders_cancelled.each do |order| %>
+        <% @orders.cancelled.each do |order| %>
           <li>#<%= order.id %></li>
           <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
           <li>Number of Items: <%= order.items.count %></li>
@@ -63,7 +63,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="completed">
       <ul>
-        <% @orders_completed.each do |order| %>
+        <% @orders.completed.each do |order| %>
           <li>#<%= order.id %></li>
           <li>Date: <%= order.created_at.strftime('%B %d, %Y') %></li>
           <li>Number of Items: <%= order.items.count %></li>
