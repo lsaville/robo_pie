@@ -1,3 +1,8 @@
-<h1>Welcome</h1>
-
-<%= button_to "Login", login_path, method: :get %>
+<div class='text-center'>
+  <h1>Welcome</h1>
+<% if logged_in? %>
+  <%= button_to "Start Shopping!", items_path, method: :get %>
+<% else %>
+  <%= button_to "Login", login_path, method: :get %>
+<% end %>
+</div>
