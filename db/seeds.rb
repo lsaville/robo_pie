@@ -52,7 +52,8 @@ end
   order.save
 end
 
-admin = User.create(
+#admin obama
+User.create(
   name: 'obama',
   email: 'o@bama.com',
   password: 'michelle',
@@ -62,4 +63,30 @@ admin = User.create(
   zip: Faker::Address.zip_code,
   phone: Faker::PhoneNumber.phone_number,
   role: 1
+)
+
+#jon
+User.create(
+name: 'Jon',
+email: 'j@jon.com',
+password: '123',
+street: Faker::Address.street_address,
+city: Faker::Address.city,
+state: Faker::Address.state,
+zip: Faker::Address.zip_code,
+phone: Faker::PhoneNumber.phone_number,
+role: 0
+)
+
+#lee
+User.create(
+name: 'Lee',
+email: 'l@lee.com',
+password: '123',
+street: Faker::Address.street_address,
+city: Faker::Address.city,
+state: Faker::Address.state,
+zip: Faker::Address.zip_code,
+phone: Faker::PhoneNumber.phone_number,
+role: 0
 )
