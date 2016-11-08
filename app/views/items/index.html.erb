@@ -2,7 +2,7 @@
 
 <% @items.each do |item| %>
   <div class="col-md-4 <%= item.title %>" >
-    <p><%= item.title %></p>
+    <h4><%= item.title %></h4>
     <img class="img-thumbnail" src="<%= item.image %>" alt="delicious item" />
     <p><%= item.description %></p>
     <p><%= number_to_currency(item.price) %></p>
