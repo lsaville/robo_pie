@@ -1,7 +1,7 @@
 <h1> All Items For <%= @category.title %> </h1>
   <% @category.items.each do |item| %>
     <div class="col-md-4 <%= item.title %>" >
-      <h4> <%= item.title %> </h4> <br>
+      <h4><%= link_to item.title, item_path(item) %></h4> <br>
       <img class="img-thumbnail" src=" <%= item.image %> " alt="delicious item" /> <br>
       <p><%= item.description %></p>
       <p><%= number_to_currency(item.price) %></p>
