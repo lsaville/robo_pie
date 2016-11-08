@@ -1,22 +1,36 @@
 <h1>Your Cart</h1>
+<div>
+  <table class="table table-hover clearfix">
+    <th> </th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Subtotal</th>
+  <% @items.each do |item, quantity| %>
+    <tr>
+    <td> <img class="img-thumbnail" src="<%= item.image %>" alt="delicious <%= item.title %>" height="100" width="100"/></td>
+    <td> <%= link_to item.title, item_path(item) %> </td>
+    <td> <%= item.description %> </td>
+    <td>
+      <%= form_tag(cart_path(item_id: item.id), method: :put) do %>
+      <%= select_tag(:quantity, options_for_select(['1','2','3','4','5','6','7','8','9','10'], quantity)) %>
+      <%= submit_tag 'Update', :class => "btn btn-info" %>
+      <% end %>
+    </td>
+    <td> <%= number_to_currency(item.price) %> </td>
+    <td> <%= number_to_currency(item.price * quantity) %> </td>
+    <td><%= button_to "Remove", cart_path(item_id: item.id), method: :delete, :class => "btn btn-danger" %> </td>
+  </tr>
+    <% end %>
+  </table>
+</div>
+  <div style='float:right;'>
+    <h5> Total: <%= number_to_currency(@total) %> </h5>
 
-<% @items.each do |item, quantity| %>
-  Title:<p><%= item.title %></p>
-  <img class="img-thumbnail" src="<%= item.image %>" alt="delicious <%= item.title %>" height="100" width="100"/><br>
-  Description:<p><%= item.description %></p>
-  Price:<p><%= number_to_currency(item.price) %></p>
-  Quantity:
-  <%= form_tag(cart_path(item_id: item.id), method: :put) do %>
-    <%= select_tag(:quantity, options_for_select(['1','2','3','4','5','6','7','8','9','10'], quantity)) %>
-    <%= submit_tag 'Update' %>
-  <% end %>
-  <%= button_to "Remove", cart_path(item_id: item.id), method: :delete %>
-<% end %>
-
-Total: <%= number_to_currency(@total) %>
-
-<% if logged_in? %>
-  <%= button_to 'Checkout', orders_path %>
-<% else %>
-  <%= button_to "Login or Create Account to Checkout", login_path, method: :get %>
-<% end %>
+    <% if logged_in? %>
+    <%= button_to 'Checkout', orders_path, :class => "btn btn-warning" %>
+    <% else %>
+    <%= button_to "Login or Create Account to Checkout", login_path, method: :get, :class => "btn btn-warning" %>
+    <% end %>
+  </div>
