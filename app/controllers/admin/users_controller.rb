@@ -12,7 +12,6 @@ class Admin::UsersController < Admin::BaseController
     if @user.save
       flash[:success] = 'Successfully updated!'
       redirect_to admin_path(@user)
-      # redirect_to admin_user_path(@user)
     else
       render :edit
     end
