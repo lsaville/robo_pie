@@ -21,17 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    @user = User.find(params[:id])
-    @user.update(user_params)
-    if @user.save
-      flash[:success] = 'Successfully updated!'
-      redirect_to admin_path(@user)
-    else
-      redirect_to "/admin/#{@user.id}/edit"
-    end
-  end
-
   private
 
   def user_params

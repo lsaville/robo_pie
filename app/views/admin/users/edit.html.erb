@@ -1,0 +1,51 @@
+<h1> Edit Your Information </h1>
+<div class = "form-group text-center">
+  <%= form_for [:admin, @admin] do |f| %>
+    <%= render partial: "shared/errors", locals: { target: @admin } %>
+    <div class="form-group col-xs-2">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :email %>
+      <%= f.text_field :email, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :street %>
+      <%= f.text_field :street, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :city %>
+      <%= f.text_field :city, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :state %>
+      <%= f.text_field :state, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :zip %>
+      <%= f.text_field :zip, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => "form-control" %>
+    </div>
+
+    <div class="form-group col-xs-2">
+      <%= f.label :password_confirmation, "Password Confirmation"%>
+      <%= f.password_field :password_confirmation, :class => "form-control" %>
+    </div>
+    <%= f.submit "Update Info" %>
+  <% end %>
+</div>

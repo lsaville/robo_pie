@@ -31,8 +31,9 @@ describe 'Admin visits dashboard' do
     user = Fabricate(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    visit "/admin/#{user.id}/edit"
-
+    # visit "/admin/user/#{user.id}/edit"
+    visit edit_admin_user_path(user)
+    
     expect(page).to have_content('404')
   end
 end
