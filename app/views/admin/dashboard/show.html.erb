@@ -3,4 +3,4 @@
 Name: <%= @admin.name %>
 Email: <%= @admin.email %>
 
-<%= button_to "Edit Info", "/admin/#{@admin.id}/edit", method: :get %>
+<%= button_to "Edit Info", edit_admin_user_path(@admin), method: :get %>

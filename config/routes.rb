@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   root to: 'welcome#show'
 
   namespace :admin do
+    resources :orders, only: [:update]
+    resources :users, only: [:update, :edit]
     get '/dashboard', to: 'dashboard#index'
     get '/:id', to: 'dashboard#show'
-    get ':id/edit', to: 'dashboard#edit'
-    # put '/:id', to: 'dashboard#update'
   end
 
   get '/login', to: 'sessions#new'
@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
 
-  resources :users, only: [:create, :new, :update]
+  resources :users, only: [:create, :new]
 
-  resources :orders, only: [:index, :show, :create, :update]
+  resources :orders, only: [:index, :show, :create]
 
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'

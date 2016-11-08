@@ -1,6 +1,6 @@
 <h1> Edit Your Information </h1>
 
-<%= form_for @admin do |f| %>
+<%= form_for [:admin, @admin] do |f| %>
   <%= render partial: "shared/errors", locals: { target: @admin } %>
   <%= f.label :name %>
   <%= f.text_field :name %>
