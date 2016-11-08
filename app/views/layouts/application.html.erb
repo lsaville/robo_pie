@@ -58,10 +58,6 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-
-
-
     <% flash.each do |type, message| %>
       <%= content_tag(:div, message.html_safe, class: "#{type} text-center flash") %>
     <% end %>
