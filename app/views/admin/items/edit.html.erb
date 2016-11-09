@@ -1,0 +1,33 @@
+<div class='container'>
+  <h1>Edit Item <%= @item.title %></h1>
+  <div class = 'form-group'>
+    <%= form_for [:admin, @item] do |f| %>
+      <%= render partial: 'shared/errors', locals: { target: @item } %>
+      <div class='row'>
+        <div class='form-group  col-md-6'>
+          <%= f.label :title  %>
+          <%= f.text_field :title, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='form-group col-md-6'>
+          <%= f.label :description %>
+          <%= f.text_field :description, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='form-group col-md-6'>
+          <%= f.label :image %>
+          <%= f.text_field :image, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='form-group col-md-6'>
+          <%= f.label :status %>
+          <%= f.select :status, options_for_select(['retired', 'active']) %>
+        </div>
+      </div>
+      <%= f.submit 'Update Item', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
