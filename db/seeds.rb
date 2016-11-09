@@ -5,18 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-categories = [ Category.create(title: 'plastitarian'),
-               Category.create(title: 'gasket lovers'),
-               Category.create(title: 'metaltarian'),
-               Category.create(title: 'silicon'),
-               Category.create(title: 'rubber')
+categories = [ Category.create(title: 'Plastitarian'),
+               Category.create(title: 'Gasket lovers'),
+               Category.create(title: 'Metaltarian'),
+               Category.create(title: 'Silicon'),
+               Category.create(title: 'Rubber')
              ]
 
 items = []
 20.times do
   items << Item.create(
     title: Faker::Lorem.word,
-    description: Faker::Hipster.paragraph,
+    description: Faker::Hipster.words(6).join(" "),
     price: Faker::Commerce.price,
     image: Faker::Avatar.image,
     category: categories.sample,
