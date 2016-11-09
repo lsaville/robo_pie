@@ -24,7 +24,10 @@ describe 'Admin dashboard' do
     end
 
     admin = Fabricate(:user, role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    visit login_path
+    fill_in 'Email', with: admin.email
+    fill_in 'Password', with: admin.password
+    click_button 'Login'
 
     visit admin_dashboard_path
   end
@@ -49,7 +52,7 @@ describe 'Admin dashboard' do
     @order1.status = 'paid'
     @order1.save
     visit admin_dashboard_path
-    
+
     click_link 'Paid'
 
     expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
