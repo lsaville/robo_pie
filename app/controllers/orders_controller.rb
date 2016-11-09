@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    render file: '/public/404' if !logged_in?
     @orders = Order.where(user_id: session[:user_id])
   end
 
@@ -13,12 +14,9 @@ class OrdersController < ApplicationController
 
   def create
     user = User.find(session[:user_id])
-    current_order = user.orders.new
-    session[:cart].each do |item, quantity|
-      current_order.items << Item.find(item)
-      current_order.orders_items[-1].quantity = quantity
-    end
-    current_order.save
+
+    CartHandler.make_order(user, session[:cart])
+
     flash[:success] = 'Order was successfully placed!'
     session.delete(:cart)
     redirect_to orders_path
