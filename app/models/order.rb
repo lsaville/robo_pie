@@ -5,9 +5,9 @@ class Order < ActiveRecord::Base
   has_many :orders_items
   has_many :items, through: :orders_items
 
-  def totalize
+  def totalize(order)
     items.reduce(0) do |result, item|
-      result += item.subtotal
+      result += item.subtotal(order)
       result
     end
   end
@@ -26,5 +26,12 @@ class Order < ActiveRecord::Base
 
   def self.completed
     where(status: 'completed')
+  end
+
+  def item_count
+    orders_items.reduce(0) do |total, item|
+      total += item.quantity
+      total 
+    end
   end
 end
