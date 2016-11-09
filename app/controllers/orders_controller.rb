@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    render file: '/public/404' if !logged_in?
     @orders = Order.where(user_id: session[:user_id])
   end
 
