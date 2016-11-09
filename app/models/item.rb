@@ -9,12 +9,12 @@ class Item < ActiveRecord::Base
   has_many :orders_items
   has_many :orders, through: :orders_items
 
-  def item_quantity
-    orders_items[0].quantity
+  def item_quantity(order)
+    orders_items.find_by(order: order).quantity
   end
 
-  def subtotal
-    item_quantity * price
+  def subtotal(order)
+    item_quantity(order) * price
   end
 
   def active?
