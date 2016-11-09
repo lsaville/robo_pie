@@ -3,7 +3,7 @@
 <h1> Your Order </h1>
 </div>
 
-<h3> <%= @order.created_at.strftime('%B %d, %Y') %> </h3>
+<h3> <%= @order.created_at.strftime('%B %d, %Y %r') %> </h3>
 
 <table class="table table-hover">
     <th></th>
@@ -24,7 +24,7 @@
 </table>
 
   <div class="text-center">
-    Updated At: <h5> <%= @order.updated_at.strftime('%B %d, %Y') %> </h5>
+    Updated At: <h5> <%= @order.updated_at.strftime('%B %d, %Y %r') %> </h5>
     Status: <%= @order.status %> <br>
 
     Total: <%= number_to_currency(@order.totalize) %>

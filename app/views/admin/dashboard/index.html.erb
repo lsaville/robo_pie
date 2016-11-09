@@ -1,4 +1,4 @@
-<h1> Welcome Admin </h1>
+<h1> Admin Dashboard: <%= link_to @admin.name, admin_path(@admin) %> </h1>
 
 <div class='col-md-8'>
   <h3>Order Filter</h3>
@@ -22,7 +22,7 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.id %></td>
-              <td><%= order.created_at.strftime('%B %d, %Y') %></td>
+              <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
               <td><%= order.items.count %></td>
               <td><%= order.status %></td>
               <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary" %></td>
@@ -39,7 +39,7 @@
         <% @orders.ordered.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
+            <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
             <td><%= order.items.count %></td>
             <td><%= order.status %></td>
             <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
@@ -58,7 +58,7 @@
         <% @orders.paid.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
+            <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
             <td><%= order.items.count %></td>
             <td><%= order.status %></td>
             <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
@@ -77,7 +77,7 @@
         <% @orders.cancelled.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
+            <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
             <td><%= order.items.count %></td>
             <td><%= order.status %></td>
             <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
@@ -94,7 +94,7 @@
         <% @orders.completed.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
+            <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
             <td><%= order.items.count %></td>
             <td><%= order.status %></td>
             <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>

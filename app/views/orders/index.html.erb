@@ -8,7 +8,7 @@
     <th>View </th>
     <% @orders.each do |order| %>
     <tr>
-      <td> <%= order.created_at.strftime('%B %d, %Y') %></td>
+      <td> <%= order.created_at.strftime('%B %d, %Y %r') %></td>
       <td> <%= order.items.count %> </td>
       <td> <%= number_to_currency(order.totalize) %> </td>
       <td> <%= button_to "View Order", order_path(order), method: :get, :class => 'btn btn-primary' %> </td>
