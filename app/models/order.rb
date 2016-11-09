@@ -27,4 +27,11 @@ class Order < ActiveRecord::Base
   def self.completed
     where(status: 'completed')
   end
+
+  def item_count
+    orders_items.reduce(0) do |total, item|
+      total += item.quantity
+      total 
+    end
+  end
 end
