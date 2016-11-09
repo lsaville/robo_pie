@@ -3,6 +3,7 @@ class Admin::DashboardController < Admin::BaseController
 
   def index
     @orders = Order.all
+    @admin = User.find(session[:user_id])
   end
 
   def show
