@@ -33,8 +33,8 @@ describe 'Admin dashboard' do
   end
 
   scenario 'it has a list of all orders' do
-    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
-    expect(page).to have_content(@order2.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y %r'))
+    expect(page).to have_content(@order2.created_at.strftime('%B %d, %Y %r'))
   end
 
   scenario 'it has a list of ordered orders' do
@@ -43,7 +43,7 @@ describe 'Admin dashboard' do
     visit admin_dashboard_path
     click_on 'Ordered'
 
-    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y %r'))
     expect(page).to have_button('Mark as Paid')
     expect(page).to have_button('Cancel')
   end
@@ -55,7 +55,7 @@ describe 'Admin dashboard' do
 
     click_link 'Paid'
 
-    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y %r'))
     expect(page).to have_button('Mark as Completed')
     expect(page).to have_button('Cancel')
   end
@@ -66,7 +66,7 @@ describe 'Admin dashboard' do
     visit admin_dashboard_path
     click_on 'Cancelled'
 
-    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y %r'))
   end
 
   scenario 'it has a list of completed orders' do
@@ -75,6 +75,6 @@ describe 'Admin dashboard' do
     visit admin_dashboard_path
     click_on 'Completed'
 
-    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(@order1.created_at.strftime('%B %d, %Y %r'))
   end
 end

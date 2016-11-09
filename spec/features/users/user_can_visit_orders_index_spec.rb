@@ -29,8 +29,8 @@ describe 'User can see past orders' do
     click_link 'Orders'
 
     expect(current_path).to eq(orders_path)
-    expect(page).to have_content(order1.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(order1.created_at.strftime('%B %d, %Y %r'))
     expect(page).to have_button("View Order")
-    expect(page).to have_content(order2.created_at.strftime('%B %d, %Y'))
+    expect(page).to have_content(order2.created_at.strftime('%B %d, %Y %r'))
   end
 end
