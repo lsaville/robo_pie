@@ -1,4 +1,4 @@
-<h1> All Items For <%= @category.title %> </h1>
+<h1> <%= @category.title %> Pies </h1>
   <% @category.items.each do |item| %>
     <div class="col-md-4 <%= item.title %>" >
       <h4><%= link_to item.title, item_path(item) %></h4> <br>
