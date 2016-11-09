@@ -1,106 +1,110 @@
-<h1> Welcome Admin </h1>
+<div class="container">
+  <h1> Admin Dashboard: <%= link_to @admin.name, admin_path(@admin) %> </h1>
+  <%= button_to "Edit Items", admin_items_path, method: :get, class: "btn btn-success" %>
 
-<div class='col-md-8'>
-  <h3>Order Filter</h3>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs nav-pills" role="tablist">
-    <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">All <span class="badge"> <%= @orders.count %> </span></a></li>
-    <li role="presentation"><a href="#ordered" aria-controls="ordered" role="tab" data-toggle="tab">Ordered <span class="badge"> <%= @orders.ordered.count %> </span></a></li>
-    <li role="presentation"><a href="#paid" aria-controls="paid" role="tab" data-toggle="tab">Paid <span class="badge"> <%= @orders.paid.count %> </span></a></li>
-    <li role="presentation"><a href="#cancelled" aria-controls="cancelled" role="tab" data-toggle="tab">Cancelled <span class="badge"> <%= @orders.cancelled.count %> </span></a></li>
-    <li role="presentation"><a href="#completed" aria-controls="completed" role="tab" data-toggle="tab">Completed <span class="badge"> <%= @orders.completed.count %> </span></a></li>
-  </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="all">
+  <div class='col-md-8'>
+    <h3>Order Filter</h3>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-pills" role="tablist">
+      <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">All <span class="badge"> <%= @orders.count %> </span></a></li>
+      <li role="presentation"><a href="#ordered" aria-controls="ordered" role="tab" data-toggle="tab">Ordered <span class="badge"> <%= @orders.ordered.count %> </span></a></li>
+      <li role="presentation"><a href="#paid" aria-controls="paid" role="tab" data-toggle="tab">Paid <span class="badge"> <%= @orders.paid.count %> </span></a></li>
+      <li role="presentation"><a href="#cancelled" aria-controls="cancelled" role="tab" data-toggle="tab">Cancelled <span class="badge"> <%= @orders.cancelled.count %> </span></a></li>
+      <li role="presentation"><a href="#completed" aria-controls="completed" role="tab" data-toggle="tab">Completed <span class="badge"> <%= @orders.completed.count %> </span></a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="all">
+          <table class='table table-hover'>
+            <th> ID </th>
+            <th> Date </th>
+            <th> # of Items </th>
+            <th> Status </th>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.id %></td>
+                <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
+                <td><%= order.items.count %></td>
+                <td><%= order.status %></td>
+                <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="ordered">
         <table class='table table-hover'>
           <th> ID </th>
           <th> Date </th>
           <th> # of Items </th>
           <th> Status </th>
-          <% @orders.each do |order| %>
+          <% @orders.ordered.each do |order| %>
             <tr>
               <td><%= order.id %></td>
-              <td><%= order.created_at.strftime('%B %d, %Y') %></td>
+              <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
               <td><%= order.items.count %></td>
               <td><%= order.status %></td>
-              <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary" %></td>
+              <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
+              <td><%= button_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :put, :class => "btn btn-success"   %></td>
+              <td><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :put, :class => "btn btn-danger"   %></td>
             </tr>
           <% end %>
-      </table>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="ordered">
-      <table class='table table-hover'>
-        <th> ID </th>
-        <th> Date </th>
-        <th> # of Items </th>
-        <th> Status </th>
-        <% @orders.ordered.each do |order| %>
-          <tr>
-            <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
-            <td><%= order.items.count %></td>
-            <td><%= order.status %></td>
-            <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
-            <td><%= button_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :put, :class => "btn btn-success"   %></td>
-            <td><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :put, :class => "btn btn-danger"   %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="paid">
-      <table class='table table-hover'>
-        <th> ID </th>
-        <th> Date </th>
-        <th> # of Items </th>
-        <th> Status </th>
-        <% @orders.paid.each do |order| %>
-          <tr>
-            <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
-            <td><%= order.items.count %></td>
-            <td><%= order.status %></td>
-            <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
-            <td><%= button_to 'Mark as Completed', admin_order_path(order, status: 'completed'), method: :put, :class => "btn btn-warning"   %></td>
-            <td><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :put, :class => "btn btn-danger"   %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="cancelled">
-      <table class='table table-hover'>
-        <th> ID </th>
-        <th> Date </th>
-        <th> # of Items </th>
-        <th> Status </th>
-        <% @orders.cancelled.each do |order| %>
-          <tr>
-            <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
-            <td><%= order.items.count %></td>
-            <td><%= order.status %></td>
-            <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="completed">
-      <table class='table table-hover'>
-        <th> ID </th>
-        <th> Date </th>
-        <th> # of Items </th>
-        <th> Status </th>
-        <% @orders.completed.each do |order| %>
-          <tr>
-            <td><%= order.id %></td>
-            <td><%= order.created_at.strftime('%B %d, %Y') %></td>
-            <td><%= order.items.count %></td>
-            <td><%= order.status %></td>
-            <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
-          </tr>
-        <% end %>
-      </table>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="paid">
+        <table class='table table-hover'>
+          <th> ID </th>
+          <th> Date </th>
+          <th> # of Items </th>
+          <th> Status </th>
+          <% @orders.paid.each do |order| %>
+            <tr>
+              <td><%= order.id %></td>
+              <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
+              <td><%= order.items.count %></td>
+              <td><%= order.status %></td>
+              <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
+              <td><%= button_to 'Mark as Completed', admin_order_path(order, status: 'completed'), method: :put, :class => "btn btn-warning"   %></td>
+              <td><%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :put, :class => "btn btn-danger"   %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="cancelled">
+        <table class='table table-hover'>
+          <th> ID </th>
+          <th> Date </th>
+          <th> # of Items </th>
+          <th> Status </th>
+          <% @orders.cancelled.each do |order| %>
+            <tr>
+              <td><%= order.id %></td>
+              <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
+              <td><%= order.items.count %></td>
+              <td><%= order.status %></td>
+              <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="completed">
+        <table class='table table-hover'>
+          <th> ID </th>
+          <th> Date </th>
+          <th> # of Items </th>
+          <th> Status </th>
+          <% @orders.completed.each do |order| %>
+            <tr>
+              <td><%= order.id %></td>
+              <td><%= order.created_at.strftime('%B %d, %Y %r') %></td>
+              <td><%= order.items.count %></td>
+              <td><%= order.status %></td>
+              <td><%= button_to 'View Order', order_path(order), method: :get, :class => "btn btn-primary"  %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>

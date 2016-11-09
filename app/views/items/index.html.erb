@@ -3,9 +3,13 @@
 <% @items.each do |item| %>
   <div class="col-md-4 <%= item.title %>" >
     <h4><%= link_to item.title, item_path(item) %></h4>
-    <img class="img-thumbnail" src="<%= item.image %>" alt="delicious item" />
+      <img class="img-thumbnail" src="<%= item.image %>" alt="delicious item" />
     <p><%= item.description %></p>
     <p><%= number_to_currency(item.price) %></p>
-    <%= button_to "Add To Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+    <% if active_item?(item) %>
+      <%= button_to "Add To Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+    <% else %>
+      <%= button_to "Retired", items_path, method: :get, class: "btn btn-danger disabled" %>
+    <% end %>
   </div>
 <% end %>
