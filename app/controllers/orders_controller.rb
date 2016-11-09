@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
     end
     current_order.save
     flash[:success] = 'Order was successfully placed!'
+    session.delete(:cart)
     redirect_to orders_path
   end
 
