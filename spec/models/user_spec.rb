@@ -26,6 +26,31 @@ describe User do
         expect(user2).to be_invalid
       end
 
+      it 'is invalid without a street' do
+        user = Fabricate.build(:user, street: nil)
+        expect(user).to be_invalid
+      end
+
+      it 'is invalid without a city' do
+        user = Fabricate.build(:user, city: nil)
+        expect(user).to be_invalid
+      end
+
+      it 'is invalid without a state' do
+        user = Fabricate.build(:user, state: nil)
+        expect(user).to be_invalid
+      end
+
+      it 'is invalid without a zip' do
+        user = Fabricate.build(:user, zip: nil)
+        expect(user).to be_invalid
+      end
+
+      it 'is invalid without a phone' do
+        user = Fabricate.build(:user, phone: nil)
+        expect(user).to be_invalid
+      end
+
       it 'is invalid without password' do
         user = Fabricate.build(:user, password: nil)
         expect(user).to be_invalid
@@ -46,6 +71,13 @@ describe User do
         expect(user.role).to eq("default")
         expect(user.default?).to be_truthy
       end
+    end
+  end
+
+  describe 'relationships' do
+    it 'has many orders' do
+      user = Fabricate.build(:user)
+      expect(user).to respond_to(:orders)
     end
   end
 end
