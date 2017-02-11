@@ -1,5 +1,8 @@
 #Robo_pie
-https://ghastly-shadow-87066.herokuapp.com/
+
+![image of robo-pie home-page](https://github.com/lsaville/readme-screenshots/blob/master/robo-pies/Screen%20Shot%202017-02-11%20at%203.59.21%20PM.png?raw=true)
+
+Please visit the live app at: https://ghastly-shadow-87066.herokuapp.com/
 
 Built With:  Ruby on Rails, Postgresql, RSpec, Bootstrap, HTML, CSS
 
@@ -10,11 +13,5 @@ Visitors can then login or signup and their orders will persist in their cart.  
 Admins can view all orders.  Admins can mark an order as 'Ordered', 'Paid', 'Cancelled', and 'Completed' and then filter all orders by their status.  They can also edit the name, description, image, and price of items available in the store and set items to active and inactive.
 
 ## In Action
-
-##### Home Page
-
-![image of robo-pie home-page](https://github.com/lsaville/readme-screenshots/blob/master/robo-pies/Screen%20Shot%202017-02-11%20at%203.59.21%20PM.png?raw=true)
-
-##### Admin Dashboard
 
 ![image of admin dashboard](https://github.com/lsaville/readme-screenshots/blob/master/robo-pies/Screen%20Shot%202017-02-11%20at%204.00.06%20PM.png?raw=true)
