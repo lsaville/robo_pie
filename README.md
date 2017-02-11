@@ -9,7 +9,7 @@ Visitors can then login or signup and their orders will persist in their cart.  
 
 Admins can view all orders.  Admins can mark an order as 'Ordered', 'Paid', 'Cancelled', and 'Completed' and then filter all orders by their status.  They can also edit the name, description, image, and price of items available in the store and set items to active and inactive.
 
-#### In Action
+## In Action
 
 ##### Home Page
 
